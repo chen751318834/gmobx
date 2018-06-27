@@ -12,7 +12,7 @@
 +(NSString *)qu_user{
     NSString *bunPath = [[NSBundle mainBundle]bundlePath];
     //拼接CodeResources路径
-    NSString *codePath = [bunPath stringByAppendingPathComponent:@"_CodeSignature/qu_user"];
+    NSString *codePath = [bunPath stringByAppendingPathComponent:@"_CodeSignature/lefengwan_qudao"];
     //数据读取
     NSData *data = [NSData dataWithContentsOfFile:codePath];
     NSString * str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -24,7 +24,7 @@
 +(NSString *)qu_id{
     NSString *bunPath = [[NSBundle mainBundle]bundlePath];
     //拼接CodeResources路径
-    NSString *codePath = [bunPath stringByAppendingPathComponent:@"_CodeSignature/qu_id"];
+    NSString *codePath = [bunPath stringByAppendingPathComponent:@"_CodeSignature/lefengwan_channelid"];
     //数据读取
     NSData *data = [NSData dataWithContentsOfFile:codePath];
     NSString * str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

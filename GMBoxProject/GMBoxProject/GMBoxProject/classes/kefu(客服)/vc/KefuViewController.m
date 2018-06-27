@@ -17,6 +17,9 @@
 @implementation KefuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 11.0) {
+        self.webview.scrollView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://yun.wuyousy.com/service?user=%@",[NSString qu_user]]]]];

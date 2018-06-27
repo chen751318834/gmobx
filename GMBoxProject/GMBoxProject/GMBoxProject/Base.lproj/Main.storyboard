@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1SZ-lL-nkD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,18 +54,18 @@
             <objects>
                 <viewController title="客服" id="f4S-4O-ZwG" customClass="KefuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n5O-L4-MM4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-wq-Mu2">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="f4S-4O-ZwG" id="dBi-Eq-ZbP"/>
                                 </connections>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vpC-IQ-p5G">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                                 <color key="tintColor" red="0.84705882349999995" green="0.1176470588" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="color" red="0.84705882349999995" green="0.1176470588" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
@@ -92,18 +96,18 @@
             <objects>
                 <viewController storyboardIdentifier="ZXDetailViewController" id="qBR-jR-R1J" customClass="ZXDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ztK-cu-uQt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCk-7o-cji">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="qBR-jR-R1J" id="nLb-qV-hgv"/>
                                 </connections>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-qA-LwI">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                                 <color key="tintColor" red="0.84705882349999995" green="0.1176470588" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="color" red="0.84705882349999995" green="0.1176470588" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
@@ -134,15 +138,15 @@
             <objects>
                 <tableViewController title="资讯" id="kMk-rs-WNE" customClass="ZXTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hrn-ww-FnJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1do-V2-O2a">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1do-V2-O2a" id="5C8-Ff-jHo">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -179,35 +183,6 @@
             <point key="canvasLocation" x="598" y="-237"/>
         </scene>
         <!--开服表-->
-        <scene sceneID="0zh-qH-dpg">
-            <objects>
-                <tableViewController title="开服表" id="F4r-6B-b6l" customClass="KFBViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DTq-XZ-H0f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rq1-cQ-73b">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rq1-cQ-73b" id="5RJ-eO-0Q1">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="F4r-6B-b6l" id="J5Z-KN-crq"/>
-                            <outlet property="delegate" destination="F4r-6B-b6l" id="9rF-0m-PRA"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="开服表" id="Poe-Jr-mTy"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pmc-gi-Dva" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1550" y="-1067"/>
-        </scene>
-        <!--开服表-->
         <scene sceneID="rkp-mi-l2A">
             <objects>
                 <navigationController id="1wC-b8-2I0" sceneMemberID="viewController">
@@ -220,27 +195,91 @@
                         <color key="tintColor" red="0.84705882349999995" green="0.1176470588" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="F4r-6B-b6l" kind="relationship" relationship="rootViewController" id="9gd-w5-LON"/>
+                        <segue destination="K7P-AR-u7u" kind="relationship" relationship="rootViewController" id="TUg-I5-LUx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH3-sm-igh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="598" y="-1067"/>
         </scene>
+        <!--开服表-->
+        <scene sceneID="1Qu-CC-4UD">
+            <objects>
+                <viewController id="K7P-AR-u7u" customClass="KFBViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z4j-NV-6Cn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-xT-A4E">
+                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pr1-QE-Pqm">
+                                        <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                        <segments>
+                                            <segment title="今日开服"/>
+                                            <segment title="昨日开服"/>
+                                            <segment title="即将开服"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.3411764706" green="0.73333333329999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segmentedControlValueChanged:" destination="K7P-AR-u7u" eventType="valueChanged" id="A6Z-2u-Vkg"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4CB-V4-xpi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pr1-QE-Pqm" secondAttribute="bottom" constant="8" id="LtP-SH-blf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pr1-QE-Pqm" secondAttribute="trailing" constant="8" id="bkj-yr-4fH"/>
+                                    <constraint firstItem="Pr1-QE-Pqm" firstAttribute="leading" secondItem="Uhk-xT-A4E" secondAttribute="leading" constant="8" id="giV-tg-QLX"/>
+                                    <constraint firstItem="Pr1-QE-Pqm" firstAttribute="top" secondItem="Uhk-xT-A4E" secondAttribute="top" constant="8" id="zhK-qG-aP5"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iQP-Sz-Dpz">
+                                <rect key="frame" x="0.0" y="109" width="375" height="509"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="K7P-AR-u7u" id="w8o-jJ-hDs"/>
+                                    <outlet property="delegate" destination="K7P-AR-u7u" id="j4D-pR-qPj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iQP-Sz-Dpz" firstAttribute="top" secondItem="Uhk-xT-A4E" secondAttribute="bottom" id="40o-v9-yyZ"/>
+                            <constraint firstItem="sl0-aG-87x" firstAttribute="trailing" secondItem="Uhk-xT-A4E" secondAttribute="trailing" id="68l-Fy-naW"/>
+                            <constraint firstItem="Uhk-xT-A4E" firstAttribute="leading" secondItem="sl0-aG-87x" secondAttribute="leading" id="9ze-kC-zbh"/>
+                            <constraint firstItem="iQP-Sz-Dpz" firstAttribute="trailing" secondItem="sl0-aG-87x" secondAttribute="trailing" id="MxB-E7-YuL"/>
+                            <constraint firstItem="sl0-aG-87x" firstAttribute="bottom" secondItem="iQP-Sz-Dpz" secondAttribute="bottom" id="qUh-hu-Z1L"/>
+                            <constraint firstItem="Uhk-xT-A4E" firstAttribute="top" secondItem="sl0-aG-87x" secondAttribute="top" id="qbD-8M-CSQ"/>
+                            <constraint firstItem="iQP-Sz-Dpz" firstAttribute="leading" secondItem="sl0-aG-87x" secondAttribute="leading" id="yKq-ke-fAT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sl0-aG-87x"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="开服表" id="iDZ-mr-fI1"/>
+                    <connections>
+                        <outlet property="segc" destination="Pr1-QE-Pqm" id="2Qj-xB-hF4"/>
+                        <outlet property="tableView" destination="iQP-Sz-Dpz" id="lFA-56-d5N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="One-MW-sSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1550" y="-1135"/>
+        </scene>
         <!--游戏-->
         <scene sceneID="NMj-re-qsS">
             <objects>
                 <tableViewController title="游戏" id="mjb-di-Fgp" customClass="GameTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wtj-gd-cik">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kUM-5b-ahU">
-                                <rect key="frame" x="0.0" y="55.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kUM-5b-ahU" id="mfF-wT-ml9">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -261,11 +300,11 @@
             <objects>
                 <viewController storyboardIdentifier="GameDetailViewController" id="AQ9-ih-Whc" customClass="GameDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v9p-8d-gV3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kDL-TQ-5de">
-                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="AQ9-ih-Whc" id="8ws-Kd-hck"/>
@@ -273,10 +312,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlD-hI-YaH">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evt-J2-aqv">
-                                        <rect key="frame" x="20" y="4.5" width="560" height="40"/>
+                                        <rect key="frame" x="20" y="4.5" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.1669553617" green="0.82610103629999998" blue="0.027345499749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="30q-Pk-PQ6"/>

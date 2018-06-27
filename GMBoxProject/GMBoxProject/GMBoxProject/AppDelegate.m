@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import <AFNetworking/AFNetworking.h>
+#import "NSString+GM.h"
 @interface AppDelegate ()
 
 @end
@@ -16,10 +17,67 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/version" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
+        if ([dict[@"code"] isEqualToNumber:@1]) {
+            NSDictionary * d = dict[@"versioninfo"];
+            NSLog(@"dict   ---- %@",dict[@"versioninfo"]);
+            NSString * version = d[@"bb"];
+            NSString * nr = d[@"nr"];
+            NSString * down_plist = d[@"down_plist"];
+            NSLog(@"version   ---- %f",[self version:version]);
+
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+   
+            NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+            
+            CGFloat localversion = [self version:app_build];
+            NSLog(@"localversion   ---- %f   [UIDevice currentDevice].systemVersion --- %@",localversion,app_build);
+            if ([self version:version] > localversion) {
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"检测到新版本" message:[NSString stringWithFormat:@"本次更新内容：\n\n %@",nr] preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                
+                [alert addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    NSString * plistStr = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",down_plist];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:plistStr]];
+                    
+                    exit(0);
+                }]];
+                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            }
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
+//
     return YES;
 }
-
+- (CGFloat )version:(NSString *)version{
+    
+    
+    NSRange fRange = [version rangeOfString:@"."];
+    
+    
+    CGFloat v = 0.0f;
+    
+    if(fRange.location != NSNotFound){
+        version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+        NSMutableString *mVersion = [NSMutableString stringWithString:version];
+        [mVersion insertString:@"." atIndex:fRange.location];
+        v = [mVersion floatValue];
+    }else {
+        // 版本应该有问题(由于ios 的版本 是7.0.1，没有发现出现过没有小数点的情况)
+        v = [version floatValue];
+    }
+    
+    return v;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

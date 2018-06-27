@@ -34,9 +34,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"游戏专区";
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 11.0) {
+        self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+    }
     self.headerView.delegate = self;
     self.tableView.alpha = 0;
-    self.headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 557);
+    self.headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 457);
     self.tableView.tableHeaderView = self.headerView;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.tableFooterView = [UIView new];

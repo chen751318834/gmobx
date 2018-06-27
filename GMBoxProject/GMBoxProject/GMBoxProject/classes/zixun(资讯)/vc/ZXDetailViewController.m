@@ -19,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 11.0) {
+        self.webview.scrollView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
+    }
     NSString * url = [NSString stringWithFormat:@"http://fggood.com:8000/new/new.php?id=%@",self.ID];
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }

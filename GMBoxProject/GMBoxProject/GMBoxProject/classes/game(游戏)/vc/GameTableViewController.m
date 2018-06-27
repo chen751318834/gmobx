@@ -139,11 +139,11 @@
 
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return self.datas.count == 0 ? 0 : 40;
+    return self.datas.count == 0 ? 0 : 80;
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
     v.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1];
     v.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.2].CGColor;
     v.layer.borderWidth = 0.5;
@@ -158,10 +158,32 @@
         notice = [notice stringByAppendingString:[NSString stringWithFormat:@"%@  ",obj[@"neirong"]]];
     }];
     autoScrollLabel.text = notice;
-    autoScrollLabel.textColor = [UIColor blackColor];
+    autoScrollLabel.textColor = [UIColor redColor];
     [v addSubview:img];
     [v addSubview:autoScrollLabel];
     self.autoScrollLabel = autoScrollLabel;
+    
+    //火
+    UIView * v2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+    v2.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:1];
+    v2.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.2].CGColor;
+    v2.layer.borderWidth = 0.5;
+    v2.clipsToBounds = YES;
+    [v addSubview:v2];
+    v2.frame = CGRectMake(0, 40, self.view.bounds.size.width, 40);
+
+    UIImageView * img2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"火"]];
+    img2.contentMode = UIViewContentModeScaleAspectFit;
+    img2.frame = CGRectMake(8, 0, 25, 40);
+    [v2 addSubview:img2];
+    UILabel * lb = [[UILabel alloc] init];
+    lb.textColor = [UIColor blackColor];
+    lb.font = [UIFont systemFontOfSize:15];
+    lb.text = @"新游推荐";
+    lb.frame = CGRectMake(40, 0, self.view.bounds.size.width, 40);
+
+    [v2 addSubview:lb];
+
     return v;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
