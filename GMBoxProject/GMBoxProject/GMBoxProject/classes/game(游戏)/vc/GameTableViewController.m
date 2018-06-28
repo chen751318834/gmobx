@@ -62,7 +62,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getData)];
     [self.tableView.mj_header beginRefreshing];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"下载"] style:UIBarButtonItemStyleDone target:self action:@selector(openDownLoadList)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"下载"] style:UIBarButtonItemStyleDone target:self action:@selector(openDownLoadList)];
     
 //
   
@@ -79,6 +79,8 @@
     
 }
 - (void)getData{
+    self.tableView.userInteractionEnabled = NO;
+
     __weak typeof(self) weakself = self;
     [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/Game" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
         if ([dict[@"code"] isEqualToNumber:@1]) {
@@ -102,10 +104,12 @@
                 }
                 [self.tableView reloadData];
                 [self.tableView.mj_header endRefreshing];
-                
+                self.tableView.userInteractionEnabled = YES;
+
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [self.tableView.mj_header endRefreshing];
-                
+                self.tableView.userInteractionEnabled = YES;
+
             }];
             
             

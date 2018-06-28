@@ -7,7 +7,7 @@
 //
 
 #import "NSString+GM.h"
-
+#import <UIKit/UIKit.h>
 @implementation NSString (GM)
 +(NSString *)qu_user{
     NSString *bunPath = [[NSBundle mainBundle]bundlePath];
@@ -29,8 +29,9 @@
     NSData *data = [NSData dataWithContentsOfFile:codePath];
     NSString * str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if ([str isEqualToString:@""]) {
-        return @"yuxuan";
+        return @"1000001";
     }
+    
     return str;
     
 }

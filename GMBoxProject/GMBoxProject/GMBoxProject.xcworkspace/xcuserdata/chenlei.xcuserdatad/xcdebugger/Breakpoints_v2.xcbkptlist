@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/game(&#x6e38;&#x620f;)/vc/GameDetailViewController.m"
-            timestampString = "551775696.214474"
+            timestampString = "551864822.5131789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-didClickImageViewWithIndex:img:"
             landmarkType = "7">
             <Locations>
@@ -36,11 +36,11 @@
                   moduleName = "GMBoxProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenlei/Desktop/gmobx/GMBoxProject/GMBoxProject/GMBoxProject/classes/game(%E6%B8%B8%E6%88%8F)/vc/GameDetailViewController.m"
-                  timestampString = "551848069.2990119"
+                  timestampString = "551864649.998528"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
                   offsetFromSymbolStart = "75">
                </Location>
                <Location
@@ -51,26 +51,26 @@
                   moduleName = "GMBoxProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenlei/Desktop/gmobx/GMBoxProject/GMBoxProject/GMBoxProject/classes/game(%E6%B8%B8%E6%88%8F)/vc/GameDetailViewController.m"
-                  timestampString = "551848069.3027771"
+                  timestampString = "551864650.00231"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "131"
-                  endingLineNumber = "131"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.212"
+                  symbolName = "__destroy_helper_block_.167"
                   moduleName = "GMBoxProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chenlei/Desktop/gmobx/GMBoxProject/GMBoxProject/GMBoxProject/classes/game(%E6%B8%B8%E6%88%8F)/vc/GameDetailViewController.m"
-                  timestampString = "551848069.306807"
+                  timestampString = "551864650.006171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
@@ -131,7 +131,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/kefu(&#x5ba2;&#x670d;)/vc/KefuViewController.m"
-            timestampString = "551775696.214947"
+            timestampString = "551857864.3799241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -147,11 +147,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/kfb(&#x5f00;&#x670d;&#x8868;)/vc/KFBViewController.m"
-            timestampString = "551793287.209096"
+            timestampString = "551857864.380343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-getData"
             landmarkType = "7">
          </BreakpointContent>
@@ -163,11 +163,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/kfb(&#x5f00;&#x670d;&#x8868;)/vc/KFBViewController.m"
-            timestampString = "551793287.2091939"
+            timestampString = "551857864.380711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-getData"
             landmarkType = "7">
          </BreakpointContent>
@@ -179,11 +179,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/kfb(&#x5f00;&#x670d;&#x8868;)/vc/KFBViewController.m"
-            timestampString = "551793287.2092789"
+            timestampString = "551857864.380796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-getData"
             landmarkType = "7">
          </BreakpointContent>
@@ -195,108 +195,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.515143"
+            timestampString = "551864822.51352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.515568"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.515651"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.515721"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.51579"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.5158581"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-version:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GMBoxProject/AppDelegate.m"
-            timestampString = "551847674.5159301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-version:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -307,7 +211,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/other/lib/DownloadCell.m"
-            timestampString = "551848051.298161"
+            timestampString = "551857864.382943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -323,12 +227,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GMBoxProject/classes/other/lib/DownloadTool/DownloadManager.m"
-            timestampString = "551848072.666"
+            timestampString = "551857864.383783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
             landmarkName = "-installIpaWithDownloadItem:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMBoxProject/classes/game(&#x6e38;&#x620f;)/view/GameTableViewCell.m"
+            timestampString = "551864822.514096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-install:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMBoxProject/classes/game(&#x6e38;&#x620f;)/view/GameTableViewCell.m"
+            timestampString = "551864822.514178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-install:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMBoxProject/AppDelegate.m"
+            timestampString = "551864822.514246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-updateapp"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GMBoxProject/AppDelegate.m"
+            timestampString = "551864822.514666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-updateapp"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

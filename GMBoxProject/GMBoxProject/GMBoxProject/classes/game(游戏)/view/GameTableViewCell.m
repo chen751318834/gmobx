@@ -37,29 +37,35 @@
     
 }
 - (IBAction)install:(id)sender {
+
     UITabBarController * tabbar = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController * nav = (UINavigationController *)tabbar.selectedViewController;
 
     [[UIApplication sharedApplication].keyWindow makeToastActivity:CSToastPositionCenter];
     AFHTTPSessionManager * manager =  [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager GET:self.game.down_plist parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
-        NSString * string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"string   --- %@",string);
-        NSRange startRange = [string rangeOfString:@"<string>http://"];
-        NSRange endRange = [string rangeOfString:@"ipa</string>"];
-        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-        NSString *result = [string substringWithRange:range];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    [manager GET:self.game.down_url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
+//        NSString * string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"string   --- %@",string);
+//        NSRange startRange = [string rangeOfString:@"<string>http://"];
+//        NSRange endRange = [string rangeOfString:@"ipa</string>"];
+//        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//        NSString *result = [string substringWithRange:range];
+//        [[UIApplication sharedApplication].keyWindow hideToastActivity];
+//        NSString * end = [NSString stringWithFormat:@"http://%@ipa",result];
+//        
+//        NSRange startRange2 = [end rangeOfString:@"/yuxuan_"];
+//        NSRange endRange2 = [end rangeOfString:@".ipa"];
+//        NSRange range2 = NSMakeRange(startRange2.location + startRange2.length, endRange2.location - startRange2.location - startRange2.length);
+//        NSString *result2 = [end substringWithRange:range2];
         [[UIApplication sharedApplication].keyWindow hideToastActivity];
-        NSString * end = [NSString stringWithFormat:@"http://%@ipa",result];
-        
-        NSRange startRange2 = [end rangeOfString:@"/yuxuan_"];
-        NSRange endRange2 = [end rangeOfString:@".ipa"];
-        NSRange range2 = NSMakeRange(startRange2.location + startRange2.length, endRange2.location - startRange2.location - startRange2.length);
-        NSString *result2 = [end substringWithRange:range2];
+
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.game.down_plist]]];
+
         
         //getFilePath
-      [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:self.game.local_plist andGameName:self.game.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:self.game.game_icon];
+     /** [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:self.game.local_plist andGameName:self.game.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:self.game.game_icon];
    
         UIAlertController * alertControlle = [UIAlertController alertControllerWithTitle:@"已经添加游戏到下载列表！" message:nil preferredStyle:UIAlertControllerStyleAlert
                                   ];
@@ -71,9 +77,10 @@
             [nav pushViewController:vc animated:YES];
         }]];
         [nav presentViewController:alertControlle animated:YES completion:nil];
-        
+        **/
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[UIApplication sharedApplication].keyWindow hideToastActivity];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.game.down_plist]]];
 
     }];
     

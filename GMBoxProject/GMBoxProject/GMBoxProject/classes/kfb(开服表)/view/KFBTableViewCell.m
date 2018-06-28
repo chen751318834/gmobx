@@ -55,25 +55,46 @@
 }
 
 - (IBAction)install:(id)sender {
-    if (self.kfb.down_plist) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.kfb.down_plist]]];
-        
-        [self installApp:self.kfb];
-
-    }else{
+    
+    
+//    if (self.kfb.down_plist) {
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.kfb.down_plist]]];
+//
+////        [self installApp:self.kfb];
+//
+//    }else{
+    [[UIApplication sharedApplication].keyWindow makeToastActivity:CSToastPositionCenter];
         [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/details?qu_user=yuxuan&qu_id=1000001&game_id=1197" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id],@"game_id":self.kfb.game_id} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
+            NSString *down_url;
             if ([dict[@"code"] isEqualToNumber:@1]) {
                 self.kfb.game_logo = dict[@"gameinfo"][@"game_icon"];
                 self.kfb.down_plist = dict[@"gameinfo"][@"down_plist"];
                 self.kfb.local_plist = dict[@"gameinfo"][@"local_plist"];
+               down_url = dict[@"gameinfo"][@"down_url"];
             }
-            [self installApp:self.kfb];
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.kfb.down_plist]]];
             
+            AFHTTPSessionManager * manager =  [AFHTTPSessionManager manager];
+            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            [manager GET:down_url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
+                [[UIApplication sharedApplication].keyWindow hideToastActivity];
+
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.kfb.down_plist]]];
+
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [[UIApplication sharedApplication].keyWindow hideToastActivity];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.kfb.down_plist]]];
+
+            }];
+            
+         
+            
+//            [self installApp:self.kfb];
+            [[UIApplication sharedApplication].keyWindow hideToastActivity];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
+            [[UIApplication sharedApplication].keyWindow hideToastActivity];
+
         }];
-    }
+//    }
 
     
 

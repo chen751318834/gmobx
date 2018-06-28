@@ -32,6 +32,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.userInteractionEnabled = NO;
+
     __weak typeof(self)weakself = self;
     [self.tableView emptyViewConfigerBlock:^(FOREmptyAssistantConfiger *configer) {
         configer.emptyTitle = @"暂无资讯！";
@@ -47,15 +49,20 @@
 }
 
 - (void)getData{
+    self.tableView.userInteractionEnabled = NO;
+
     [[AFHTTPSessionManager manager]GET:@"http://fggood.com:8000/new/new_api.php" parameters:@{@"user":[NSString qu_user]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
         [self.datas removeAllObjects];
         [self.datas addObjectsFromArray:[ZxModel mj_objectArrayWithKeyValuesArray:dict[@"xinwen"]]];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         self.shouldDisplay = YES;
+        self.tableView.userInteractionEnabled = YES;
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.tableView.mj_header endRefreshing];
-        
+        self.tableView.userInteractionEnabled = YES;
+
     }];
     
 }

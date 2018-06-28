@@ -22,14 +22,19 @@
     }
 }
 - (void)viewWillAppear:(BOOL)animated{
+    
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://yun.wuyousy.com/service?user=%@",[NSString qu_user]]]]];
     
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     [self.activityIndicatorView startAnimating];
+    self.webview.userInteractionEnabled = NO;
+
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [self.activityIndicatorView stopAnimating];
+    self.webview.userInteractionEnabled = YES;
+
     
 }
 @end

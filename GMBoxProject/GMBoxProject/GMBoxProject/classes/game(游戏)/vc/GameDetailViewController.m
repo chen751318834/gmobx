@@ -37,6 +37,8 @@
     if ([[UIDevice currentDevice].systemVersion floatValue] < 11.0) {
         self.tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     }
+    self.tableView.userInteractionEnabled = NO;
+
     self.headerView.delegate = self;
     self.tableView.alpha = 0;
     self.headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 457);
@@ -46,46 +48,52 @@
     [self getData];
 }
 - (IBAction)install:(UIButton *)sender {
+
     [self installApp:self.gameDetail];
 }
 - (void)installApp:(GameDetail *)model{
+    
     UITabBarController * tabbar = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController * nav = (UINavigationController *)tabbar.selectedViewController;
     [[UIApplication sharedApplication].keyWindow makeToastActivity:CSToastPositionCenter];
     AFHTTPSessionManager * manager =  [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager GET:model.down_plist parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
-        NSString * string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"string   --- %@",string);
-        NSRange startRange = [string rangeOfString:@"<string>http://"];
-        NSRange endRange = [string rangeOfString:@"ipa</string>"];
-        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-        NSString *result = [string substringWithRange:range];
+    [manager GET:model.down_url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
+//        NSString * string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"string   --- %@",string);
+//        NSRange startRange = [string rangeOfString:@"<string>http://"];
+//        NSRange endRange = [string rangeOfString:@"ipa</string>"];
+//        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//        NSString *result = [string substringWithRange:range];
+//        [[UIApplication sharedApplication].keyWindow hideToastActivity];
+//        NSString * end = [NSString stringWithFormat:@"http://%@ipa",result];
+//
+//        NSRange startRange2 = [end rangeOfString:@"/yuxuan_"];
+//        NSRange endRange2 = [end rangeOfString:@".ipa"];
+//        NSRange range2 = NSMakeRange(startRange2.location + startRange2.length, endRange2.location - startRange2.location - startRange2.length);
+//        NSString *result2 = [end substringWithRange:range2];
         [[UIApplication sharedApplication].keyWindow hideToastActivity];
-        NSString * end = [NSString stringWithFormat:@"http://%@ipa",result];
-        
-        NSRange startRange2 = [end rangeOfString:@"/yuxuan_"];
-        NSRange endRange2 = [end rangeOfString:@".ipa"];
-        NSRange range2 = NSMakeRange(startRange2.location + startRange2.length, endRange2.location - startRange2.location - startRange2.length);
-        NSString *result2 = [end substringWithRange:range2];
-        
-        
-        [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:model.local_plist andGameName:model.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:model.game_icon];
-        
-        UIAlertController * alertControlle = [UIAlertController alertControllerWithTitle:@"已经添加游戏到下载列表" message:nil preferredStyle:UIAlertControllerStyleAlert
-                                              ];
-        [alertControlle addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-        [alertControlle addAction:[UIAlertAction actionWithTitle:@"查看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            DownLoadlistViewController * vc = [[DownLoadlistViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
 
-            [nav pushViewController:vc animated:YES];
-        }]];
-        [nav presentViewController:alertControlle animated:YES completion:nil];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.gameDetail.down_plist]]];
+
+//
+//        [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:model.local_plist andGameName:model.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:model.game_icon];
+//
+//        UIAlertController * alertControlle = [UIAlertController alertControllerWithTitle:@"已经添加游戏到下载列表" message:nil preferredStyle:UIAlertControllerStyleAlert
+//                                              ];
+//        [alertControlle addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+//        [alertControlle addAction:[UIAlertAction actionWithTitle:@"查看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            DownLoadlistViewController * vc = [[DownLoadlistViewController alloc] init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//
+//            [nav pushViewController:vc animated:YES];
+//        }]];
+//        [nav presentViewController:alertControlle animated:YES completion:nil];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[UIApplication sharedApplication].keyWindow hideToastActivity];
-        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",self.gameDetail.down_plist]]];
+
     }];
     
 }
@@ -99,10 +107,12 @@
         [self.tableView reloadData];
         [self.view hideToastActivity];
         self.tableView.alpha = 1;
+        self.tableView.userInteractionEnabled = YES;
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.view hideToastActivity];
         self.tableView.alpha = 1;
+        self.tableView.userInteractionEnabled = YES;
 
     }];
     

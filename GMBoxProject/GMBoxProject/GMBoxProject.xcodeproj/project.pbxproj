@@ -67,6 +67,9 @@
 		CE012A3620E24A1F0066894A /* OneDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE012A1720E24A1F0066894A /* OneDownloadItem.m */; };
 		CE012A3B20E24A4A0066894A /* DownLoadlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE012A3920E24A4A0066894A /* DownLoadlistViewController.m */; };
 		CE012A3C20E24A4A0066894A /* DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE012A3A20E24A4A0066894A /* DownloadCell.m */; };
+		CEE5C71C20E4905D0002DB32 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE5C71B20E4905D0002DB32 /* libz.tbd */; };
+		CEE5C71E20E490610002DB32 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE5C71D20E490610002DB32 /* JavaScriptCore.framework */; };
+		CEE5C72020E490AD0002DB32 /* JSPatchPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE5C71F20E490AD0002DB32 /* JSPatchPlatform.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,6 +186,9 @@
 		CE012A3820E24A4A0066894A /* DownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCell.h; sourceTree = "<group>"; };
 		CE012A3920E24A4A0066894A /* DownLoadlistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadlistViewController.m; sourceTree = "<group>"; };
 		CE012A3A20E24A4A0066894A /* DownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadCell.m; sourceTree = "<group>"; };
+		CEE5C71B20E4905D0002DB32 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CEE5C71D20E490610002DB32 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		CEE5C71F20E490AD0002DB32 /* JSPatchPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatchPlatform.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +196,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE5C71E20E490610002DB32 /* JavaScriptCore.framework in Frameworks */,
+				CEE5C71C20E4905D0002DB32 /* libz.tbd in Frameworks */,
 				63EDD3D26B2157ED199B2F2E /* Pods_GMBoxProject.framework in Frameworks */,
+				CEE5C72020E490AD0002DB32 /* JSPatchPlatform.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +218,8 @@
 		8F9C08F482FAC8200ACCECB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEE5C71D20E490610002DB32 /* JavaScriptCore.framework */,
+				CEE5C71B20E4905D0002DB32 /* libz.tbd */,
 				645AE40DDCE8C7A6C288966B /* Pods_GMBoxProject.framework */,
 			);
 			name = Frameworks;
@@ -312,6 +323,7 @@
 		CE01298620E208C10066894A /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				CEE5C71F20E490AD0002DB32 /* JSPatchPlatform.framework */,
 				CE012A3720E24A490066894A /* DownLoadlistViewController.h */,
 				CE012A3920E24A4A0066894A /* DownLoadlistViewController.m */,
 				CE012A3820E24A4A0066894A /* DownloadCell.h */,
@@ -961,6 +973,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 37YT2ZVSMW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GMBoxProject/classes/other/lib",
+				);
 				INFOPLIST_FILE = GMBoxProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -987,6 +1003,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 37YT2ZVSMW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GMBoxProject/classes/other/lib",
+				);
 				INFOPLIST_FILE = GMBoxProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

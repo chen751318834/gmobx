@@ -9,54 +9,135 @@
 #import "AppDelegate.h"
 #import <AFNetworking/AFNetworking.h>
 #import "NSString+GM.h"
-@interface AppDelegate ()
+#import "JANALYTICSService.h"
+#import <JSPatchPlatform/JSPatch.h>
+#import <Reachability/Reachability.h>
 
+#define  jspatchPublicKey @"-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDsHsl93+6hHsOWfp/3GTKy9nvucHRFQ+4KfxVspSppAIliefzlSMW1aCR3yx0wNAXB0569w3gPVMJlesR+5I4Aiv/y6V8/xnVaA02kWtnXnyd3GginHA7T11nQfJ7wt7XHTM6f+BsVs6rcjubNEC/Le1Mav7dapyckbj1WhlVhUQIDAQAB-----END PUBLIC KEY-----"
+#define jspatchAppKey @"ea4055fc34a48b3f"
+
+@interface AppDelegate ()
+@property(assign,nonatomic)bool update;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [JSPatch setupCallback:^(JPCallbackType type, NSDictionary *data, NSError *error) {
+        if (type == JPCallbackTypeRunScript) {
+        }
+    }];
     
+    //        [JSPatch testScriptInBundle];
+    [JSPatch startWithAppKey:jspatchAppKey];
+    [JSPatch setupRSAPublicKey:jspatchPublicKey];
+    [JSPatch sync];
+    
+//    JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
+//    
+//    config.appKey = @"ec215059719ac58dbb9cd2f2";
+//    
+//    config.channel = [NSString qu_user];
+//    
+//    [JANALYTICSService setupWithConfig:config];
+//    [JANALYTICSService setFrequency:0];
+//    [JANALYTICSService crashLogON];
+    [self updateapp];
+
+    Reachability* reach = [Reachability reachabilityForInternetConnection];
+    __weak typeof(self) wself = self;
+    // Set the blocks
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        // keep in mind this is called on a background thread
+        // and if you are updating the UI it needs to happen
+        // on the main thread, like this:
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"REACHABLE!");
+            [wself updateapp];
+            
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+        NSLog(@"UNREACHABLE!");
+    };
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
+    [reach startNotifier];
+
+    
+    
+//
+    return YES;
+}
+- (void)updateapp{
+    if (self.update) {
+        return;
+    }
     [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/version" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
         if ([dict[@"code"] isEqualToNumber:@1]) {
+            self.update = YES;
             NSDictionary * d = dict[@"versioninfo"];
             NSLog(@"dict   ---- %@",dict[@"versioninfo"]);
             NSString * version = d[@"bb"];
             NSString * nr = d[@"nr"];
             NSString * down_plist = d[@"down_plist"];
+            //            NSString * down_url = d[@"down_url"];
             NSLog(@"version   ---- %f",[self version:version]);
-
+            
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-   
-            NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+            
+            NSString *app_build = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
             
             CGFloat localversion = [self version:app_build];
             NSLog(@"localversion   ---- %f   [UIDevice currentDevice].systemVersion --- %@",localversion,app_build);
-            if ([self version:version] > localversion) {
-                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"检测到新版本" message:[NSString stringWithFormat:@"本次更新内容：\n\n %@",nr] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
+            if ([self version:version] != localversion) {
                 
-                [alert addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                AFHTTPSessionManager * manager =  [AFHTTPSessionManager manager];
+                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                [manager GET:[NSString stringWithFormat:@"http://down.wuyousy.com/down.php?game_type=iosgmbox&game_bs=GMBoxProject&qu_id=%@",[NSString qu_id]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable data) {
                     
-                    NSString * plistStr = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",down_plist];
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:plistStr]];
+                    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"检测到新版本" message:[NSString stringWithFormat:@"本次更新内容：\n\n %@",nr] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }]];
                     
-                    exit(0);
-                }]];
-                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        NSString * plistStr = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",down_plist];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:plistStr]];
+                        
+                        exit(0);
+                    }]];
+                    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"检测到新版本" message:[NSString stringWithFormat:@"本次更新内容：\n\n %@",nr] preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"稍后更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }]];
+                    
+                    [alert addAction:[UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        NSString * plistStr = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",down_plist];
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:plistStr]];
+                        
+                        exit(0);
+                    }]];
+                    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+                }];
+                
+                
             }
         }
-
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
     
-    
-//
-    return YES;
 }
 - (CGFloat )version:(NSString *)version{
     

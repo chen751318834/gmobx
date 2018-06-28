@@ -28,9 +28,12 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     [self.activityIndicatorView startAnimating];
+    self.webview.userInteractionEnabled = NO;
+
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [self.activityIndicatorView stopAnimating];
-    
+    self.webview.userInteractionEnabled = YES;
+
 }
 @end

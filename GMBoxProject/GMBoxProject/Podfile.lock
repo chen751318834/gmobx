@@ -17,6 +17,9 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - FORScrollViewEmptyAssistant (1.2.2):
     - DZNEmptyDataSet (= 1.8.1)
+  - JAnalytics (1.2.1):
+    - JCore (~> 1.2.0)
+  - JCore (1.2.0)
   - KSPhotoBrowser (0.1.6):
     - YYWebImage (~> 1.0.5)
   - MJExtension (3.0.15)
@@ -40,6 +43,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FORScrollViewEmptyAssistant
+  - JAnalytics
   - KSPhotoBrowser
   - MJExtension
   - MJRefresh
@@ -53,6 +57,8 @@ SPEC REPOS:
     - AFNetworking
     - DZNEmptyDataSet
     - FORScrollViewEmptyAssistant
+    - JAnalytics
+    - JCore
     - KSPhotoBrowser
     - MJExtension
     - MJRefresh
@@ -69,6 +75,8 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FORScrollViewEmptyAssistant: ede93d2bd9926dff6f2364d40047505a0d334158
+  JAnalytics: a65f716b383ad470aacd63a7af1984746cc3e06f
+  JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
   KSPhotoBrowser: 6955ac1847676a2a5f2d6bf8b6b39ee567c37e0e
   MJExtension: 3f039575db1b135a20699ad298713b26acec1528
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
@@ -81,6 +89,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: d64b3282f960726edfed88b372366ed75a20fec5
+PODFILE CHECKSUM: 9015ba5a60089a9b2cbf9dac11d004d3081e596b
 
 COCOAPODS: 1.5.3

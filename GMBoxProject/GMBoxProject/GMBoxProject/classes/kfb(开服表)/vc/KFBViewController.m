@@ -78,7 +78,10 @@
     self.tableView.hidden = NO;
     self.tableView2.hidden = YES;
     self.tableView3.hidden = YES;
-    
+    self.tableView.userInteractionEnabled = NO;
+    self.tableView2.userInteractionEnabled = NO;
+    self.tableView3.userInteractionEnabled = NO;
+
     __weak typeof(self)weakself = self;
     [self.tableView emptyViewConfigerBlock:^(FOREmptyAssistantConfiger *configer) {
         configer.emptyTitle = @"暂时没有游戏开服！";
@@ -208,10 +211,17 @@
         [self.tableView reloadData];
         [self.tableView2 reloadData];
         [self.tableView3 reloadData];
+        self.tableView.userInteractionEnabled = YES;
+        self.tableView2.userInteractionEnabled = YES;
+        self.tableView3.userInteractionEnabled = YES;
+
         self.shouldDisplay = YES;
         [self.view hideToastActivity];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.view hideToastActivity];
+        self.tableView.userInteractionEnabled = YES;
+        self.tableView2.userInteractionEnabled = YES;
+        self.tableView3.userInteractionEnabled = YES;
 
     }];
     
