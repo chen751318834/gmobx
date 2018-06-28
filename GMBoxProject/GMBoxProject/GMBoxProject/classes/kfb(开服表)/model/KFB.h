@@ -16,6 +16,6 @@
 @property(copy,nonatomic) NSString * game_id;
 @property(copy,nonatomic) NSString * down_plist;
 @property(copy,nonatomic) NSString * local_plist;
-@property(copy,nonatomic) NSString * game_logo;
+@property(strong,nonatomic) NSString * game_logo;
 
 @end

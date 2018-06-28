@@ -39,6 +39,7 @@
 - (IBAction)install:(id)sender {
     UITabBarController * tabbar = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     UINavigationController * nav = (UINavigationController *)tabbar.selectedViewController;
+
     [[UIApplication sharedApplication].keyWindow makeToastActivity:CSToastPositionCenter];
     AFHTTPSessionManager * manager =  [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -57,10 +58,10 @@
         NSRange range2 = NSMakeRange(startRange2.location + startRange2.length, endRange2.location - startRange2.location - startRange2.length);
         NSString *result2 = [end substringWithRange:range2];
         
-        
-        [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:self.game.local_plist andGameName:self.game.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:self.game.game_icon];
-
-        UIAlertController * alertControlle = [UIAlertController alertControllerWithTitle:@"已经添加游戏到下载列表" message:nil preferredStyle:UIAlertControllerStyleAlert
+        //getFilePath
+      [[DownloadManager manager] addDownloadTaskWithUrl:[NSString stringWithFormat:@"http://%@ipa",result]  andPlistUrl:self.game.local_plist andGameName:self.game.name andGameId:[NSString stringWithFormat:@"yuxuan_%@",result2] andType:self.game.game_icon];
+   
+        UIAlertController * alertControlle = [UIAlertController alertControllerWithTitle:@"已经添加游戏到下载列表！" message:nil preferredStyle:UIAlertControllerStyleAlert
                                   ];
         [alertControlle addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
         [alertControlle addAction:[UIAlertAction actionWithTitle:@"查看" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -52,7 +52,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+//    NSLog(@"FilePath====%@",[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:nil]);
+
     self.cycleScrollView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 0, (self.view.bounds.size.height - 64 - 55) / 4 + 20)];
     self.cycleScrollView.delegate = self;
     self.cycleScrollView.backgroundColor = [UIColor whiteColor];

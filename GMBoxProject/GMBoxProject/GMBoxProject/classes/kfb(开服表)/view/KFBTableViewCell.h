@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "KFB.h"
+
+@interface KFBTImageView  : UIImageView
+@property(copy,nonatomic) NSString* gameid;
+@property(copy,nonatomic) NSString* icon;
+
+@end
+
 @interface KFBTableViewCell : UITableViewCell
 @property(strong,nonatomic) KFB  * kfb;
 

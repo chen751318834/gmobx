@@ -14,8 +14,33 @@
 #import <Toast/Toast.h>
 #import "DownloadManager.h"
 #import "DownLoadlistViewController.h"
+
+@interface KFBTImageView ()
+
+@end
+@implementation KFBTImageView
+- (void)setGameid:(NSString*)gameid{
+    _gameid = gameid;
+//    if (self.icon == nil) {
+        [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/details?qu_user=yuxuan&qu_id=1000001&game_id=1197" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id],@"game_id":gameid} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
+            if ([dict[@"code"] isEqualToNumber:@1]) {
+                self.icon = dict[@"gameinfo"][@"game_icon"];
+                [self sd_setImageWithURL:[NSURL URLWithString:dict[@"gameinfo"][@"game_icon"]] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
+
+            }
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
+//    }
+    
+}
+@end
+
+
+
 @interface KFBTableViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *iconimg;
+@property (weak, nonatomic) IBOutlet KFBTImageView *iconimg;
 @property (weak, nonatomic) IBOutlet UILabel *namelb;
 @property (weak, nonatomic) IBOutlet UILabel *subnamelb;
 
@@ -25,23 +50,7 @@
     _kfb = kfb;
     self.namelb.text = kfb.game_name;
     self.subnamelb.text = [NSString stringWithFormat:@"%@ | %@",kfb.open_time,kfb.area];
-    
-    if (self.iconimg.image == nil) {
-        [[AFHTTPSessionManager manager]GET:@"http://hezi.wuyousy.com/iosbox/details?qu_user=yuxuan&qu_id=1000001&game_id=1197" parameters:@{@"qu_user":[NSString qu_user],@"qu_id":[NSString qu_id],@"game_id":kfb.game_id} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable dict) {
-            if ([dict[@"code"] isEqualToNumber:@1]) {
-                kfb.game_logo = dict[@"gameinfo"][@"game_icon"];
-                kfb.down_plist = dict[@"gameinfo"][@"down_plist"];
-                kfb.local_plist = dict[@"gameinfo"][@"local_plist"];
-
-            }
-
-            [self.iconimg sd_setImageWithURL:[NSURL URLWithString:kfb.game_logo] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
-        }];
-    }
-
+    self.iconimg.gameid = kfb.game_id;
 
 }
 

@@ -13,4 +13,5 @@ pod 'SDAutoLayout'
 pod 'Toast'
 pod 'KSPhotoBrowser'
 pod 'FORScrollViewEmptyAssistant'
+pod 'Reachability'
 end

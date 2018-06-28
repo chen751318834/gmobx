@@ -39,7 +39,7 @@
         weakSelf.allItemModelArr = allModelArr;
         [allModelArr enumerateObjectsUsingBlock:^(OneDownloadItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             DownloadCell * cell = [weakSelf.allGameTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
-            [cell updateCell:weakSelf.allItemModelArr[idx]];
+            [cell updateCell2:weakSelf.allItemModelArr[idx]];
         }];
     }];
     
@@ -48,12 +48,7 @@
         [[DownloadManager manager] installIpaWithDownloadItem:oneItem];
     }];
     
-    
-    [[AFHTTPSessionManager manager]GET:@"http://127.0.0.1:10001/yuxuan_gmwygj_new.ipa" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
+
     
 }
 
@@ -132,5 +127,8 @@
     
 }
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+    
+}
 @end

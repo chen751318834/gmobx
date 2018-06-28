@@ -243,15 +243,39 @@
                                     <outlet property="delegate" destination="K7P-AR-u7u" id="j4D-pR-qPj"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wWq-Pn-Yo3">
+                                <rect key="frame" x="0.0" y="79" width="375" height="509"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="K7P-AR-u7u" id="Ja9-bw-k6B"/>
+                                    <outlet property="delegate" destination="K7P-AR-u7u" id="xpX-gJ-8wm"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9VD-Nx-gGN">
+                                <rect key="frame" x="0.0" y="79" width="375" height="509"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="K7P-AR-u7u" id="bOx-N0-QdQ"/>
+                                    <outlet property="delegate" destination="K7P-AR-u7u" id="L0W-SK-LgX"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iQP-Sz-Dpz" firstAttribute="top" secondItem="Uhk-xT-A4E" secondAttribute="bottom" id="40o-v9-yyZ"/>
                             <constraint firstItem="sl0-aG-87x" firstAttribute="trailing" secondItem="Uhk-xT-A4E" secondAttribute="trailing" id="68l-Fy-naW"/>
                             <constraint firstItem="Uhk-xT-A4E" firstAttribute="leading" secondItem="sl0-aG-87x" secondAttribute="leading" id="9ze-kC-zbh"/>
+                            <constraint firstItem="wWq-Pn-Yo3" firstAttribute="bottom" secondItem="iQP-Sz-Dpz" secondAttribute="bottom" id="CPb-t3-BaT"/>
+                            <constraint firstItem="wWq-Pn-Yo3" firstAttribute="top" secondItem="iQP-Sz-Dpz" secondAttribute="top" id="Des-1F-ZVA"/>
                             <constraint firstItem="iQP-Sz-Dpz" firstAttribute="trailing" secondItem="sl0-aG-87x" secondAttribute="trailing" id="MxB-E7-YuL"/>
+                            <constraint firstItem="9VD-Nx-gGN" firstAttribute="trailing" secondItem="wWq-Pn-Yo3" secondAttribute="trailing" id="YlR-cP-MTX"/>
+                            <constraint firstItem="9VD-Nx-gGN" firstAttribute="bottom" secondItem="wWq-Pn-Yo3" secondAttribute="bottom" id="b9Y-qM-e1t"/>
+                            <constraint firstItem="9VD-Nx-gGN" firstAttribute="leading" secondItem="wWq-Pn-Yo3" secondAttribute="leading" id="g8l-cZ-lJH"/>
                             <constraint firstItem="sl0-aG-87x" firstAttribute="bottom" secondItem="iQP-Sz-Dpz" secondAttribute="bottom" id="qUh-hu-Z1L"/>
                             <constraint firstItem="Uhk-xT-A4E" firstAttribute="top" secondItem="sl0-aG-87x" secondAttribute="top" id="qbD-8M-CSQ"/>
+                            <constraint firstItem="wWq-Pn-Yo3" firstAttribute="trailing" secondItem="iQP-Sz-Dpz" secondAttribute="trailing" id="qtB-B9-UaU"/>
+                            <constraint firstItem="wWq-Pn-Yo3" firstAttribute="leading" secondItem="iQP-Sz-Dpz" secondAttribute="leading" id="qy4-S8-J5h"/>
+                            <constraint firstItem="9VD-Nx-gGN" firstAttribute="top" secondItem="wWq-Pn-Yo3" secondAttribute="top" id="sLX-yx-SgC"/>
                             <constraint firstItem="iQP-Sz-Dpz" firstAttribute="leading" secondItem="sl0-aG-87x" secondAttribute="leading" id="yKq-ke-fAT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sl0-aG-87x"/>
@@ -260,6 +284,8 @@
                     <connections>
                         <outlet property="segc" destination="Pr1-QE-Pqm" id="2Qj-xB-hF4"/>
                         <outlet property="tableView" destination="iQP-Sz-Dpz" id="lFA-56-d5N"/>
+                        <outlet property="tableView2" destination="wWq-Pn-Yo3" id="4GN-6l-1ns"/>
+                        <outlet property="tableView3" destination="9VD-Nx-gGN" id="qkd-R3-Zix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="One-MW-sSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +315,7 @@
                             <outlet property="delegate" destination="mjb-di-Fgp" id="r2N-dx-BhC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="游戏" id="dCs-KB-d5k"/>
+                    <navigationItem key="navigationItem" title="GM版游戏" id="dCs-KB-d5k"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u20-b4-5ih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -364,11 +390,11 @@
             </objects>
             <point key="canvasLocation" x="2300" y="-1805"/>
         </scene>
-        <!--游戏-->
+        <!--GM版游戏-->
         <scene sceneID="1H0-Xh-c34">
             <objects>
                 <navigationController id="ksT-sh-FYP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="游戏" image="game_nor" selectedImage="game_Sel" id="O11-vx-OCK">
+                    <tabBarItem key="tabBarItem" title="GM版游戏" image="game_nor" selectedImage="game_Sel" id="O11-vx-OCK">
                         <color key="badgeColor" red="0.84705882352941175" green="0.11764705882352941" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fty-sI-uOg">

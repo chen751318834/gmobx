@@ -21,6 +21,7 @@ PODS:
     - YYWebImage (~> 1.0.5)
   - MJExtension (3.0.15)
   - MJRefresh (3.1.15.3)
+  - Reachability (3.2)
   - SDAutoLayout (2.2.0)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - KSPhotoBrowser
   - MJExtension
   - MJRefresh
+  - Reachability
   - SDAutoLayout
   - SDCycleScrollView
   - Toast
@@ -54,6 +56,7 @@ SPEC REPOS:
     - KSPhotoBrowser
     - MJExtension
     - MJRefresh
+    - Reachability
     - SDAutoLayout
     - SDCycleScrollView
     - SDWebImage
@@ -69,6 +72,7 @@ SPEC CHECKSUMS:
   KSPhotoBrowser: 6955ac1847676a2a5f2d6bf8b6b39ee567c37e0e
   MJExtension: 3f039575db1b135a20699ad298713b26acec1528
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
@@ -77,6 +81,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: e33cd5e3579c474c7cf21661f1d0cfc74950cddb
+PODFILE CHECKSUM: d64b3282f960726edfed88b372366ed75a20fec5
 
 COCOAPODS: 1.5.3

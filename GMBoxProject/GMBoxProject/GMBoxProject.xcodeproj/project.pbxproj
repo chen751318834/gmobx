@@ -714,6 +714,7 @@
 				"${BUILT_PRODUCTS_DIR}/KSPhotoBrowser/KSPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -730,6 +731,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KSPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDAutoLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -971,8 +973,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lefengwan.iosgmbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d39cdeb9-4f76-41af-97db-05c7f13699c2";
-				PROVISIONING_PROFILE_SPECIFIER = com.lefengwan.iosgmbox;
+				PROVISIONING_PROFILE = "e2349111-fb82-45e3-b268-0e620ab15dfb";
+				PROVISIONING_PROFILE_SPECIFIER = "Lefengwan iosgmbox2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -997,8 +999,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lefengwan.iosgmbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d39cdeb9-4f76-41af-97db-05c7f13699c2";
-				PROVISIONING_PROFILE_SPECIFIER = com.lefengwan.iosgmbox;
+				PROVISIONING_PROFILE = "e2349111-fb82-45e3-b268-0e620ab15dfb";
+				PROVISIONING_PROFILE_SPECIFIER = "Lefengwan iosgmbox2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

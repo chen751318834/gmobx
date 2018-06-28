@@ -52,7 +52,7 @@
                             <action selector="install:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kST-A9-ksq"/>
                         </connections>
                     </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a81-Qk-LOW">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a81-Qk-LOW" customClass="KFBTImageView">
                         <rect key="frame" x="8" y="27" width="55" height="55"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="HuQ-5l-Ay4"/>

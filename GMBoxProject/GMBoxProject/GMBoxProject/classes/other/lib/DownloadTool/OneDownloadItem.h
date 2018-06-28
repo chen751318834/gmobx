@@ -81,12 +81,16 @@ typedef enum : NSUInteger
  *  任务时间
  */
 @property (nonatomic, strong) NSDate *taskDate;
+@property (nonatomic, assign) float totalRead;
+@property (nonatomic, assign) float total;
+@property (nonatomic, assign) float bytesRead;
 
 
 /**
  *  下载状态
  */
 @property (nonatomic, assign) DownloadStatus downloadStatus;
+@property (nonatomic, strong) NSDate * date;
 
 
 -(OneDownloadItem * )initWithUrl:(NSString*)url andPlistUrl:(NSString*)plistUrl andGameName:(NSString*)gameName andGameId:(NSString*)gameId andType:(NSString*)type;

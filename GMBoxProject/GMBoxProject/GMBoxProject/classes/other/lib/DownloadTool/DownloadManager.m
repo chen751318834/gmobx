@@ -9,7 +9,7 @@
 #import "DownloadManager.h"
 #import <UIKit/UIKit.h>
 #import "HTTPServer.h"
-
+#import <Reachability/Reachability.h>
 #define MAX_DOWNLOAD_NUM 3 //最多下载并行数
 
 @interface DownloadManager()
@@ -51,6 +51,7 @@ static DownloadManager *_dataCenter = nil;
         
         //开始本地服务器
         //获取之前保存的下载项 数组
+        self.allItemArray = [NSMutableArray array];
         self.allItemArray = [self loadFromUnarchiver];
         self.backgroundIdentify = UIBackgroundTaskInvalid;
         self.backgroundIdentify = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^
@@ -90,9 +91,19 @@ static DownloadManager *_dataCenter = nil;
 // 添加任务到任务列表中
 - (void)addDownloadTaskWithUrl:(NSString *)urlString andPlistUrl:(NSString*)plistUrl andGameName:(NSString*)gameName andGameId:(NSString*)gameId andType:(NSString*)type
 {
+    
+    UITabBarController * tabbar = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController * nav = (UINavigationController *)tabbar.selectedViewController;
+
     if (!gameName ||!urlString ||!gameId ||!type || !plistUrl)
     {
         NSLog(@"-----格式无效------");
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"游戏格式无效！" message:nil preferredStyle:UIAlertControllerStyleAlert
+                                               ];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [nav presentViewController:alertController animated:YES completion:nil];
+        
         return;
     }
     
@@ -102,6 +113,14 @@ static DownloadManager *_dataCenter = nil;
         if ([urlString isEqualToString:downloadItem.urlString])
         {
             NSLog(@"任务重复");
+            
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"游戏早已经添加到下载列表了！" message:nil preferredStyle:UIAlertControllerStyleAlert
+                                                   ];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+            
+            [nav presentViewController:alertController animated:YES completion:nil];
+            
+            
             return;
         }
     }
@@ -109,6 +128,7 @@ static DownloadManager *_dataCenter = nil;
     OneDownloadItem * oneDownloadItem = [[OneDownloadItem alloc]initWithUrl:urlString andPlistUrl:plistUrl andGameName:gameName andGameId:gameId andType:type];
     [self.allItemArray addObject:oneDownloadItem];      //先添加
     [self startDownload:oneDownloadItem];               //再下载
+    return;
 }
 
 //开始下载
@@ -177,10 +197,32 @@ static DownloadManager *_dataCenter = nil;
 //下载ipa
 -(void)installIpaWithDownloadItem:(OneDownloadItem*)oneItem
 {
-   
     NSString * plistStr = [NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@",oneItem.plistUrl];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:plistStr]];
-    NSLog(@"下载plistStr======%@",plistStr);
+
+    NSURL * url = [NSURL URLWithString:plistStr];
+    if (![[UIApplication sharedApplication] canOpenURL:url]) {
+        UITabBarController * tabbar = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        UINavigationController * nav = (UINavigationController *)tabbar.selectedViewController;
+        
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"游戏下载地址有误,无法完成下载 \n\n %@",oneItem.plistUrl] message:nil preferredStyle:UIAlertControllerStyleAlert
+                                               ];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [nav presentViewController:alertController animated:YES completion:nil];
+        
+        
+        return;
+    }
+
+    Reachability* reach = [Reachability reachabilityWithHostname:@"http://127.0.0.1"];
+    if ([reach currentReachabilityStatus] == NotReachable) {
+        [self.httpServer start:nil];
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    
 }
 
 //删除一个下载项
@@ -245,7 +287,9 @@ static DownloadManager *_dataCenter = nil;
 //所有下载item归档
 -(void)saveArchiverAndUpdateUI
 {
-    [NSKeyedArchiver archiveRootObject:self.allItemArray toFile:[self getAllItemArrayPath]];
+    NSMutableArray * temps = [NSMutableArray array];
+    [temps addObjectsFromArray:self.allItemArray];
+    [NSKeyedArchiver archiveRootObject:temps toFile:[self getAllItemArrayPath]];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(self.progressBlock) self.progressBlock(self.allItemArray);  //回调界面
     });

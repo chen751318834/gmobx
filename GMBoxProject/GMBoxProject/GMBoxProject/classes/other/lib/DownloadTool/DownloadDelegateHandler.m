@@ -27,6 +27,10 @@
     return self;
 }
 
+- (NSString*)formatByteCount:(long long)size
+{
+    return [NSByteCountFormatter stringFromByteCount:size countStyle:NSByteCountFormatterCountStyleFile];
+}
 //服务器响应以后调用的代理方法
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSHTTPURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
@@ -37,6 +41,10 @@
     self.myItem.totalBytesWritten = [response.allHeaderFields[@"Content-Length"] integerValue] + [[DownloadManager manager] getAlreadyDownloadLength:self.myItem.saveName];
     self.myItem.currentBytesWritten = [[DownloadManager manager] getAlreadyDownloadLength:self.myItem.saveName];
 
+    
+
+    self.myItem.bytesRead = [response.allHeaderFields[@"Content-Length"] floatValue];
+    
     //保存当前的下载信息到沙盒 并刷新界面
     [[DownloadManager manager]updateModel:self.myItem andStatus:DownloadStatusDownloading];
 
