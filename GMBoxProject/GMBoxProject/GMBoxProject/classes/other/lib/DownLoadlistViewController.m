@@ -27,9 +27,12 @@
         configer.emptyTitle = @"您还没有下载游戏哦，快去下载吧";
         configer.emptyImage = [UIImage imageNamed:@"empty"];
     }];
-    
+
     [self.view addSubview:self.allGameTableView];
     self.allItemModelArr = [DownloadManager manager].allItemArray;
+    [self.allItemModelArr enumerateObjectsUsingBlock:^(OneDownloadItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"plistUrl  ---- %@",obj.plistUrl);
+    }];
     self.title = @"下载列表";
     self.allGameTableView.tableFooterView = [UIView new];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -48,11 +51,7 @@
         [[DownloadManager manager] installIpaWithDownloadItem:oneItem];
     }];
     
-
-    
 }
-
-
 -(UITableView*)allGameTableView
 {
     if(!_allGameTableView)

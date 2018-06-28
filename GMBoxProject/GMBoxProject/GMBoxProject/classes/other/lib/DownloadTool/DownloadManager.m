@@ -9,6 +9,7 @@
 #import "DownloadManager.h"
 #import <UIKit/UIKit.h>
 #import "HTTPServer.h"
+#import <Toast/Toast.h>
 #import <Reachability/Reachability.h>
 #define MAX_DOWNLOAD_NUM 3 //最多下载并行数
 
@@ -213,16 +214,43 @@ static DownloadManager *_dataCenter = nil;
         
         return;
     }
-
+    [[UIApplication sharedApplication].keyWindow makeToastActivity:CSToastPositionCenter];
     Reachability* reach = [Reachability reachabilityWithHostname:@"http://127.0.0.1"];
     if ([reach currentReachabilityStatus] == NotReachable) {
         [self.httpServer start:nil];
-        [[UIApplication sharedApplication] openURL:url];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:url options:nil completionHandler:^(BOOL success) {
+                if (success) {
+                    [[UIApplication sharedApplication].keyWindow hideToastActivity];
+                    
+                }else{
+                    [[UIApplication sharedApplication].keyWindow makeToast:@"下载链接有误，无法完成下载！"];
+                }
+            }];
+        } else {
+            [[UIApplication sharedApplication]  openURL:url];
+            [[UIApplication sharedApplication].keyWindow hideToastActivity];
+            
+            // Fallback on earlier versions
+        }
     }else{
         
-        [[UIApplication sharedApplication] openURL:url];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:url options:nil completionHandler:^(BOOL success) {
+                if (success) {
+                    [[UIApplication sharedApplication].keyWindow hideToastActivity];
+                    
+                }else{
+                    [[UIApplication sharedApplication].keyWindow makeToast:@"下载链接有误，无法完成下载！"];
+                }
+            }];
+        } else {
+            [[UIApplication sharedApplication]  openURL:url];
+            [[UIApplication sharedApplication].keyWindow hideToastActivity];
+
+            // Fallback on earlier versions
+        }
     }
-    
 }
 
 //删除一个下载项
